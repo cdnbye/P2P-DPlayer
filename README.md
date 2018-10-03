@@ -1,7 +1,8 @@
 <p align="center">
 <img src="https://i.imgur.com/LnPvZvO.png" alt="ADPlayer" width="100">
+<img src="https://github.com/cdnbye/hlsjs-p2p-engine/blob/master/figs/cdnbye.png" alt="CDNBye" width="100">
 </p>
-<h1 align="center">DPlayer</h1>
+<h1 align="center">P2P-DPlayer</h1>
 
 > 🍭 Wow, such a lovely HTML5 danmaku video player
 

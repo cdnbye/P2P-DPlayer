@@ -354,7 +354,7 @@ class DPlayer {
                 if (window.Hls) {
                     if (Hls.isSupported()) {
                         this.destroyPrevVideo();
-                        const hls = new Hls();
+                        const hls = new Hls(this.options.hlsjsConfig);
                         hls.loadSource(video.src);
                         hls.attachMedia(video);
 
@@ -370,7 +370,7 @@ class DPlayer {
                     requestScript('https://cdn.jsdelivr.net/npm/cdnbye@latest', () => {
                         if (Hls.isSupported()) {
                             this.destroyPrevVideo();
-                            const hls = new Hls();
+                            const hls = new Hls(this.options.hlsjsConfig);
                             hls.loadSource(video.src);
                             hls.attachMedia(video);
 

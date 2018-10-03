@@ -78,6 +78,15 @@ function initPlayers () {
         subtitle: {
             url: 'https://moeplayer.b0.upaiyun.com/dplayer/hikarunara.vtt'
         },
+        hlsjsConfig: {
+            debug: false,
+            // Other hlsjsConfig options provided by hls.js
+            p2pConfig: {
+                logLevel: false,
+                wsSignalerAddr: 'wss://free.freesignal.net',
+                // Other p2pConfig options provided by CDNBye
+            }
+        }
         // danmaku: {
         //     id: '9E2E3368B56CDBB4',
         //     api: 'https://api.prprpr.me/dplayer/'
