@@ -4,7 +4,7 @@
 </p>
 <h1 align="center">P2P-DPlayer</h1>
 
-> 🍭 Wow, such a lovely HTML5 danmaku video player
+> 🍭 Wow, such a lovely HTML5 danmaku video player powered by CDNBye P2P Engine
 
 [![npm](https://img.shields.io/npm/v/p2p-dplayer.svg?style=flat-square)](https://www.npmjs.com/package/p2p-dplayer)
 [![npm](https://img.shields.io/npm/l/dplayer.svg?style=flat-square)](https://github.com/MoePlayer/DPlayer/blob/master/LICENSE)
@@ -13,9 +13,36 @@
 [![Travis](https://img.shields.io/travis/MoePlayer/DPlayer.svg?style=flat-square)](https://travis-ci.org/MoePlayer/DPlayer)
 [![devDependency Status](https://img.shields.io/david/dev/MoePlayer/dplayer.svg?style=flat-square)](https://david-dm.org/MoePlayer/DPlayer#info=devDependencies)
 
-## Introduction
-
+## DPlayer with CDNBye P2P Engine
 ![image](figs/screen.jpg)
+
+Since had CDNBye [hlsjs-p2p-engine](https://github.com/cdnbye/hlsjs-p2p-engine), DPlayer is henceforth more lovely.
+
+## Quick Start
+```javascript
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/p2p-dplayer@latest/dist/DPlayer.min.css">
+<div id="dplayer"></div>
+<script src="https://cdn.jsdelivr.net/npm/p2p-dplayer@latest"></script>
+<script>
+    var dp = new DPlayer({
+        container: document.getElementById('dplayer'),
+        video: {
+            url: 'https://video-dev.github.io/streams/x36xhzz/url_2/193039199_mp4_h264_aac_ld_7.m3u8',
+            type: 'hls'
+        },
+        hlsjsConfig: {
+            debug: false,
+            // Other hlsjsConfig options provided by hls.js
+            p2pConfig: {
+                logLevel: true,
+                // Other p2pConfig options provided by CDNBye
+            }
+        }
+    });
+</script>
+```
+
+## Introduction
 
 DPlayer is a lovely HTML5 danmaku video player to help people build video and danmaku easily.
 
