@@ -60,17 +60,28 @@ function initPlayers () {
         preload: 'none',
         screenshot: true,
         video: {
-            url: 'https://moeplayer.b0.upaiyun.com/dplayer/hikarunara.mp4',
+            // url: 'https://moeplayer.b0.upaiyun.com/dplayer/hikarunara.flv',
+            // url: 'https://video-dev.github.io/streams/x36xhzz/url_2/193039199_mp4_h264_aac_ld_7.m3u8',
+            quality: [{
+                name: 'HD',
+                url: 'https://video-dev.github.io/streams/x36xhzz/url_2/193039199_mp4_h264_aac_ld_7.m3u8',
+                type: 'hls'
+            }, {
+                name: 'SD',
+                url: 'https://video-dev.github.io/streams/x36xhzz/url_2/193039199_mp4_h264_aac_ld_7.m3u8',
+                type: 'hls'
+            }],
+            defaultQuality: 0,
             pic: 'https://moeplayer.b0.upaiyun.com/dplayer/hikarunara.png',
             thumbnails: 'https://moeplayer.b0.upaiyun.com/dplayer/hikarunara_thumbnails.jpg'
         },
         subtitle: {
             url: 'https://moeplayer.b0.upaiyun.com/dplayer/hikarunara.vtt'
         },
-        danmaku: {
-            id: '9E2E3368B56CDBB4',
-            api: 'https://api.prprpr.me/dplayer/'
-        }
+        // danmaku: {
+        //     id: '9E2E3368B56CDBB4',
+        //     api: 'https://api.prprpr.me/dplayer/'
+        // }
     });
 
     // dp2

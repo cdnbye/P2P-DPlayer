@@ -130,6 +130,15 @@ class DPlayer {
 
         this.contextmenu = new ContextMenu(this);
 
+        // P2P
+        this.p2pInfo = {
+            version: '',
+            downloaded: 0,         // 单位KB
+            uploaded: 0,           // 单位KB
+            peerId: '',
+            peers: 0,
+        };
+
         this.initVideo(this.video, this.quality && this.quality.type || this.options.video.type);
 
         this.infoPanel = new InfoPanel(this);
@@ -334,6 +343,7 @@ class DPlayer {
                 }
             }
 
+            // TODO
             if (this.type === 'hls' && (video.canPlayType('application/x-mpegURL') || video.canPlayType('application/vnd.apple.mpegURL'))) {
                 this.type = 'normal';
             }
@@ -341,18 +351,36 @@ class DPlayer {
             switch (this.type) {
             // https://github.com/video-dev/hls.js
             case 'hls':
-                if (Hls) {
+                if (window.Hls) {
                     if (Hls.isSupported()) {
+                        this.destroyPrevVideo();
                         const hls = new Hls();
                         hls.loadSource(video.src);
                         hls.attachMedia(video);
+
+                        this.hlsjs = hls;
+                        this.setupP2PListeners(hls);
                     }
                     else {
                         this.notice('Error: Hls is not supported.');
                     }
                 }
                 else {
-                    this.notice('Error: Can\'t find Hls.');
+                    // this.notice('Error: Can\'t find Hls.');
+                    requestScript('https://cdn.jsdelivr.net/npm/cdnbye@latest', () => {
+                        if (Hls.isSupported()) {
+                            this.destroyPrevVideo();
+                            const hls = new Hls();
+                            hls.loadSource(video.src);
+                            hls.attachMedia(video);
+
+                            this.hlsjs = hls;
+                            this.setupP2PListeners(hls);
+                        }
+                        else {
+                            this.notice('Error: Hls is not supported.');
+                        }
+                    });
                 }
                 break;
 
@@ -517,19 +545,21 @@ class DPlayer {
         });
         const videoEle = new DOMParser().parseFromString(videoHTML, 'text/html').body.firstChild;
         this.template.videoWrap.insertBefore(videoEle, this.template.videoWrap.getElementsByTagName('div')[0]);
+        const currentTime = this.video.currentTime;
         this.prevVideo = this.video;
         this.video = videoEle;
         this.initVideo(this.video, this.quality.type || this.options.video.type);
-        this.seek(this.prevVideo.currentTime);
+        // this.seek(this.prevVideo.currentTime);
+        this.seek(currentTime);
         this.notice(`${this.tran('Switching to')} ${this.quality.name} ${this.tran('quality')}`, -1);
         this.events.trigger('quality_start', this.quality);
 
         this.on('canplay', () => {
             if (this.prevVideo) {
-                if (this.video.currentTime !== this.prevVideo.currentTime) {
-                    this.seek(this.prevVideo.currentTime);
-                    return;
-                }
+                // if (this.video.currentTime !== this.prevVideo.currentTime) {
+                //     this.seek(this.prevVideo.currentTime);
+                //     return;
+                // }
                 this.template.videoWrap.removeChild(this.prevVideo);
                 this.video.classList.add('dplayer-video-current');
                 if (!paused) {
@@ -542,6 +572,13 @@ class DPlayer {
                 this.events.trigger('quality_end');
             }
         });
+    }
+
+    destroyPrevVideo () {
+        if (this.hlsjs) {
+            this.hlsjs.p2pEngine.removeAllListeners();
+            this.hlsjs.destroy();
+        }
     }
 
     notice (text, time = 2000, opacity = 0.8) {
@@ -584,6 +621,35 @@ class DPlayer {
         /* global DPLAYER_VERSION */
         return DPLAYER_VERSION;
     }
+
+    // P2P
+    setupP2PListeners (hlsjs) {
+        this.p2pInfo.version = hlsjs.p2pEngine.version;
+        hlsjs.p2pEngine.on('stats', (stats) => {
+            this.p2pInfo.downloaded = stats.totalP2PDownloaded;
+            this.p2pInfo.uploaded = stats.totalP2PUploaded;
+        }).on('peerId', (peerId) => {
+            this.p2pInfo.peerId = peerId;
+        }).on('peers', (peers) => {
+            this.p2pInfo.peers = peers.length;
+        });
+    }
+}
+
+function requestScript (url, callback) {
+    // Adding the script tag to the head
+    const head = document.getElementsByTagName('head')[0];
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = url;
+
+    // Then bind the event to the callback function.
+    // There are several events for cross browser compatibility.
+    script.onreadystatechange = callback;
+    script.onload = callback;
+
+    // Fire the loading
+    head.appendChild(script);
 }
 
 export default DPlayer;

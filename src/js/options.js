@@ -48,7 +48,7 @@ export default (options) => {
 
     options.contextmenu = options.contextmenu.concat([
         {
-            text: 'Video info',
+            text: 'Video & P2P info',
             click: (player) => {
                 player.infoPanel.triggle();
             }
@@ -60,6 +60,10 @@ export default (options) => {
         {
             text: `DPlayer v${DPLAYER_VERSION}`,
             link: 'https://github.com/MoePlayer/DPlayer'
+        },
+        {
+            text: 'Powered by P2P Engine',
+            link: 'https://github.com/cdnbye/hlsjs-p2p-engine'
         }
     ]);
 

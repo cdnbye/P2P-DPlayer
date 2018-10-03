@@ -1,34 +1,40 @@
 {
-  "name": "dplayer",
-  "version": "1.25.0",
-  "description": "Wow, such a lovely HTML5 danmaku video player",
+  "name": "p2p-dplayer",
+  "version": "0.1.0",
+  "description": "Wow, such a lovely HTML5 danmaku video player powered by CDNBye P2P Engine",
   "main": "dist/DPlayer.min.js",
   "style": "dist/DPlayer.min.css",
   "scripts": {
     "start": "npm run dev",
     "build": "cross-env NODE_ENV=production webpack --config webpack/prod.config.js --progress --display-error-details --colors",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack/dev.config.js --watch --colors",
-    "test": "eslint src webpack"
+    "test": "eslint src webpack",
+    "publish": "npm publish",
+    "git-push": "git add . && git commit -m 'release v0.1' && git push"
   },
   "files": [
     "dist"
   ],
   "repository": {
-    "url": "git+https://github.com/DIYgod/DPlayer.git",
+    "url": "git+https://github.com/cdnbye/P2P-DPlayer",
     "type": "git"
   },
   "keywords": [
     "player",
     "danmaku",
     "video",
-    "html5"
+    "html5",
+    "p2p",
+    "webrtc",
+    "cdnbye",
+    "hlsjs"
   ],
-  "author": "DIYgod",
+  "author": "CDNBye",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/DIYgod/DPlayer/issues"
   },
-  "homepage": "https://github.com/DIYgod/DPlayer#readme",
+  "homepage": "https://github.com/cdnbye/P2P-DPlayer",
   "devDependencies": {
     "art-template": "4.12.2",
     "art-template-loader": "1.4.3",
