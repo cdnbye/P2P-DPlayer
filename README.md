@@ -1,6 +1,6 @@
 <p align="center">
 <img src="https://i.imgur.com/LnPvZvO.png" alt="ADPlayer" width="100">
-<img src="https://github.com/cdnbye/hlsjs-p2p-engine/blob/master/figs/cdnbye.png" alt="CDNBye" width="152.23">
+<img src="figs/cdnbye.png" alt="CDNBye" width="152.23">
 </p>
 <h1 align="center">P2P-DPlayer</h1>
 
@@ -9,13 +9,13 @@
 [![npm](https://img.shields.io/npm/v/p2p-dplayer.svg?style=flat-square)](https://www.npmjs.com/package/p2p-dplayer)
 [![npm](https://img.shields.io/npm/l/dplayer.svg?style=flat-square)](https://github.com/MoePlayer/DPlayer/blob/master/LICENSE)
 [![npm](https://img.shields.io/npm/dt/dplayer.svg?style=flat-square)](https://www.npmjs.com/package/dplayer)
-[![size](https://badge-size.herokuapp.com/MoePlayer/DPlayer/master/dist/DPlayer.min.js?compression=gzip&style=flat-square)](https://github.com/MoePlayer/DPlayer/tree/master/dist)
+[![size](https://badge-size.herokuapp.com/cdnbye/p2p-dplayer/master/dist/DPlayer.min.js?compression=gzip&style=flat-square)](https://github.com/MoePlayer/DPlayer/tree/master/dist)
 [![Travis](https://img.shields.io/travis/MoePlayer/DPlayer.svg?style=flat-square)](https://travis-ci.org/MoePlayer/DPlayer)
 [![devDependency Status](https://img.shields.io/david/dev/MoePlayer/dplayer.svg?style=flat-square)](https://david-dm.org/MoePlayer/DPlayer#info=devDependencies)
 
 ## Introduction
 
-![image](http://i.imgur.com/207ch36.jpg)
+![image](figs/screen.jpg)
 
 DPlayer is a lovely HTML5 danmaku video player to help people build video and danmaku easily.
 

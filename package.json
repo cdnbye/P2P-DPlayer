@@ -1,6 +1,6 @@
 {
   "name": "p2p-dplayer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Wow, such a lovely HTML5 danmaku video player powered by CDNBye P2P Engine",
   "main": "dist/DPlayer.min.js",
   "style": "dist/DPlayer.min.css",
@@ -10,7 +10,7 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack/dev.config.js --watch --colors",
     "test": "eslint src webpack",
     "publish": "npm publish",
-    "git-push": "git add . && git commit -m 'add hlsjsConfig' && git push"
+    "git-push": "git add . && git commit -m 'update readme' && git push"
   },
   "files": [
     "dist"
