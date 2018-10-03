@@ -1,12 +1,12 @@
 <p align="center">
 <img src="https://i.imgur.com/LnPvZvO.png" alt="ADPlayer" width="100">
-<img src="https://github.com/cdnbye/hlsjs-p2p-engine/blob/master/figs/cdnbye.png" alt="CDNBye" width="100">
+<img src="https://github.com/cdnbye/hlsjs-p2p-engine/blob/master/figs/cdnbye.png" alt="CDNBye" width="152.23">
 </p>
 <h1 align="center">P2P-DPlayer</h1>
 
 > 🍭 Wow, such a lovely HTML5 danmaku video player
 
-[![npm](https://img.shields.io/npm/v/dplayer.svg?style=flat-square)](https://www.npmjs.com/package/dplayer)
+[![npm](https://img.shields.io/npm/v/p2p-dplayer.svg?style=flat-square)](https://www.npmjs.com/package/p2p-dplayer)
 [![npm](https://img.shields.io/npm/l/dplayer.svg?style=flat-square)](https://github.com/MoePlayer/DPlayer/blob/master/LICENSE)
 [![npm](https://img.shields.io/npm/dt/dplayer.svg?style=flat-square)](https://www.npmjs.com/package/dplayer)
 [![size](https://badge-size.herokuapp.com/MoePlayer/DPlayer/master/dist/DPlayer.min.js?compression=gzip&style=flat-square)](https://github.com/MoePlayer/DPlayer/tree/master/dist)
