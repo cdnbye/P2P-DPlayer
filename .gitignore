@@ -4,3 +4,5 @@ demo2
 npm-debug.log
 DPlayer.log*
 wxw
+.vscode
+package-lock.json

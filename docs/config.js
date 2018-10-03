@@ -81,14 +81,10 @@ function clearPlayer () {
 function dplayer1 () {
     window.dp1 = new DPlayer({
         container: document.getElementById('dplayer1'),
-        screenshot: true,
         video: {
-            url: 'https://moeplayer.b0.upaiyun.com/dplayer/hikarunara.mp4',
+            url: 'https://api.dogecloud.com/player/get.mp4?vcode=5ac682e6f8231991&userId=17&ext=.mp4',
             pic: 'https://moeplayer.b0.upaiyun.com/dplayer/hikarunara.png',
             thumbnails: 'https://moeplayer.b0.upaiyun.com/dplayer/hikarunara_thumbnails.jpg'
-        },
-        subtitle: {
-            url: 'https://moeplayer.b0.upaiyun.com/dplayer/hikarunara.vtt'
         },
         danmaku: {
             id: '9E2E3368B56CDBB4',
@@ -147,7 +143,7 @@ function dplayer3 () {
             api: 'https://api.prprpr.me/dplayer/',
             token: 'tokendemo',
             maximum: 1000,
-            addition: ['https://api.prprpr.me/dplayer/bilibili?aid=4157142'],
+            addition: ['https://api.prprpr.me/dplayer/v3/bilibili?aid=4157142'],
             user: 'DIYgod',
             bottom: '15%',
             unlimited: true
@@ -162,6 +158,16 @@ function dplayer3 () {
                 click: (player) => {
                     console.log(player);
                 }
+            }
+        ],
+        highlight: [
+            {
+                time: 20,
+                text: '这是第 20 秒'
+            },
+            {
+                time: 120,
+                text: '这是 2 分钟'
             }
         ]
     });

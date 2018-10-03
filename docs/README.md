@@ -109,6 +109,7 @@ danmaku.user | 'DIYgod' | danmaku user name
 danmaku.bottom | - | values like: '10px' '10%', the distance between the danmaku bottom and player bottom, in order to prevent warding off subtitle
 danmaku.unlimited | false | display all danmaku even though danmaku overlap, notice that player will remember user setting, default setting will not work after user set it themselves
 contextmenu | [] | custom contextmenu
+highlight | [] | custom time markers upon progress bar
 mutex | true | prevent to play multiple player at the same time, pause other players when this player start play
 
 For example:
@@ -148,7 +149,7 @@ const dp = new DPlayer({
         api: 'https://api.prprpr.me/dplayer/',
         token: 'tokendemo',
         maximum: 1000,
-        addition: ['https://api.prprpr.me/dplayer/bilibili?aid=4157142'],
+        addition: ['https://api.prprpr.me/dplayer/v3/bilibili?aid=4157142'],
         user: 'DIYgod',
         bottom: '15%',
         unlimited: true
@@ -163,6 +164,16 @@ const dp = new DPlayer({
             click: (player) => {
                 console.log(player);
             }
+        }
+    ],
+    highlight: [
+        {
+            text: 'marker for 20s',
+            time: 20
+        },
+        {
+            text: 'marker for 2mins',
+            time: 120
         }
     ]
 });
@@ -386,13 +397,13 @@ Daily backup data: [DPlayer-data](https://github.com/DIYgod/DPlayer-data)
 
 `danmaku.addition`
 
-API: [https://api.prprpr.me/dplayer/v2/bilibili?aid=[aid]](https://api.prprpr.me/dplayer/v2/bilibili?aid=[aid]) or [https://api.prprpr.me/dplayer/v2/bilibili?cid=[cid]](https://api.prprpr.me/dplayer/v2/bilibili?cid=[cid])
+API: <https://api.prprpr.me/dplayer/v3/bilibili?aid=[aid]>
 
 ```js
 const option = {
     danmaku: {
         // ...
-        addition: ['https://api.prprpr.me/dplayer/v2/bilibili?aid=[aid]']
+        addition: ['https://api.prprpr.me/dplayer/v3/bilibili?aid=[aid]']
     }
 }
 ```
@@ -629,12 +640,12 @@ const dp = new DPlayer({
     live: true,
     danmaku: true,
     apiBackend: {
-        read: function (endpoint, callback) {
+        read: function (options) {
             console.log('Pretend to connect WebSocket');
             callback();
         },
-        send: function (endpoint, danmakuData, callback) {
-            console.log('Pretend to send danamku via WebSocket', danmakuData);
+        send: function (options) {
+            console.log('Pretend to send danamku via WebSocket', options.data);
             callback();
         }
     },

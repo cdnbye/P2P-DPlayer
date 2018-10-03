@@ -110,6 +110,7 @@ danmaku.user | 'DIYgod' | 弹幕用户名
 danmaku.bottom | - | 弹幕距离播放器底部的距离，防止遮挡字幕，取值形如: '10px' '10%'
 danmaku.unlimited | false | 海量弹幕模式，即使重叠也展示全部弹幕，请注意播放器会记忆用户设置，用户手动设置后即失效
 contextmenu | [] | 自定义右键菜单
+highlight | [] | 自定义进度条提示点
 mutex | true | 互斥，阻止多个播放器同时播放，当前播放器播放时暂停其他播放器
 
 例如:
@@ -149,7 +150,7 @@ const dp = new DPlayer({
         api: 'https://api.prprpr.me/dplayer/',
         token: 'tokendemo',
         maximum: 1000,
-        addition: ['https://api.prprpr.me/dplayer/bilibili?aid=4157142'],
+        addition: ['https://api.prprpr.me/dplayer/v3/bilibili?aid=4157142'],
         user: 'DIYgod',
         bottom: '15%',
         unlimited: true
@@ -164,6 +165,16 @@ const dp = new DPlayer({
             click: (player) => {
                 console.log(player);
             }
+        }
+    ],
+    highlight: [
+        {
+            time: 20,
+            text: '这是第 20 秒'
+        },
+        {
+            time: 120,
+            text: '这是 2 分钟'
         }
     ]
 });
@@ -383,13 +394,13 @@ const dp = new DPlayer({
 
 `danmaku.addition`
 
-API: [https://api.prprpr.me/dplayer/v2/bilibili?aid=[aid]](https://api.prprpr.me/dplayer/v2/bilibili?aid=[aid]) or [https://api.prprpr.me/dplayer/v2/bilibili?cid=[cid]](https://api.prprpr.me/dplayer/v2/bilibili?cid=[cid])
+API: <https://api.prprpr.me/dplayer/v3/bilibili?aid=[aid]>
 
 ```js
 const option = {
     danmaku: {
         // ...
-        addition: ['https://api.prprpr.me/dplayer/v2/bilibili?aid=[aid]']
+        addition: ['https://api.prprpr.me/dplayer/v3/bilibili?aid=[aid]']
     }
 }
 ```

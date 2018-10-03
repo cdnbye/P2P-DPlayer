@@ -106,7 +106,8 @@ class DPlayer {
                     addition: this.options.danmaku.addition,
                     user: this.options.danmaku.user,
                 },
-                events: this.events
+                events: this.events,
+                tran: (msg) => this.tran(msg),
             });
 
             this.comment = new Comment(this);
@@ -421,7 +422,8 @@ class DPlayer {
          */
         // show video time: the metadata has loaded or changed
         this.on('durationchange', () => {
-            if (video.duration !== 1) {           // compatibility: Android browsers will output 1 at first
+            // compatibility: Android browsers will output 1 or Infinity at first
+            if (video.duration !== 1 && video.duration !== Infinity) {
                 this.template.dtime.innerHTML = utils.secondToTime(video.duration);
             }
         });
@@ -434,7 +436,11 @@ class DPlayer {
 
         // video download error: an error occurs
         this.on('error', () => {
-            this.tran && this.notice && this.type !== 'webtorrent' & this.notice(this.tran('This video fails to load'), -1);
+            if (!this.video.error) {
+                // Not a video load error, may be poster load failed, see #307
+                return;
+            }
+            this.tran && this.notice && this.type !== 'webtorrent' & this.notice(this.tran('Video load failed'), -1);
         });
 
         // video end
@@ -445,7 +451,7 @@ class DPlayer {
             }
             else {
                 this.seek(0);
-                video.play();
+                this.play();
             }
             if (this.danmaku) {
                 this.danmaku.danIndex = 0;
@@ -545,10 +551,12 @@ class DPlayer {
             clearTimeout(this.noticeTime);
         }
         this.events.trigger('notice_show', text);
-        this.noticeTime = setTimeout(() => {
-            this.template.notice.style.opacity = 0;
-            this.events.trigger('notice_hide');
-        }, time);
+        if (time > 0) {
+            this.noticeTime = setTimeout(() => {
+                this.template.notice.style.opacity = 0;
+                this.events.trigger('notice_hide');
+            }, time);
+        }
     }
 
     resize () {

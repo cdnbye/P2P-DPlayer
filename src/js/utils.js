@@ -39,6 +39,36 @@ const utils = {
         return actualLeft - elementScrollLeft;
     },
 
+    /**
+    * optimize control play progress
+
+    * optimize get element's view position,for float dialog video player
+    * getBoundingClientRect 在 IE8 及以下返回的值缺失 width、height 值
+    * getBoundingClientRect 在 Firefox 11 及以下返回的值会把 transform 的值也包含进去
+    * getBoundingClientRect 在 Opera 10.5 及以下返回的值缺失 width、height 值
+    */
+    getBoundingClientRectViewLeft (element) {
+        const scrollTop = document.documentElement.scrollTop;
+
+        if (element.getBoundingClientRect) {
+            if (typeof this.getBoundingClientRectViewLeft.offset !== 'number') {
+                let temp = document.createElement('div');
+                temp.style.cssText = 'position:absolute;top:0;left:0;';
+                document.body.appendChild(temp);
+                this.getBoundingClientRectViewLeft.offset = -temp.getBoundingClientRect().top - scrollTop;
+                document.body.removeChild(temp);
+                temp = null;
+            }
+            const rect = element.getBoundingClientRect();
+            const offset = this.getBoundingClientRectViewLeft.offset;
+
+            return rect.left + offset;
+        } else {
+            // not support getBoundingClientRect
+            return this.getElementViewLeft(element);
+        }
+    },
+
     getScrollPosition () {
         return {
             left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
@@ -88,7 +118,32 @@ const utils = {
         dragStart: isMobile ? 'touchstart' : 'mousedown',
         dragMove: isMobile ? 'touchmove' : 'mousemove',
         dragEnd: isMobile ? 'touchend' : 'mouseup'
-    }
+    },
+
+    color2Number: (color) => {
+        if (color[0] === '#') {
+            color = color.substr(1);
+        }
+        if (color.length === 3) {
+            color = `${color[0]}${color[0]}${color[1]}${color[1]}${color[2]}${color[2]}`;
+        }
+        return parseInt(color, 16) + 0x000000 & 0xffffff;
+    },
+
+    number2Color: (number) => '#' + ('00000' + number.toString(16)).slice(-6),
+
+    number2Type: (number) => {
+        switch (number) {
+        case 0:
+            return 'right';
+        case 1:
+            return 'top';
+        case 2:
+            return 'bottom';
+        default:
+            return 'right';
+        }
+    },
 };
 
 export default utils;
