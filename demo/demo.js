@@ -82,7 +82,7 @@ function initPlayers () {
             debug: false,
             // Other hlsjsConfig options provided by hls.js
             p2pConfig: {
-                logLevel: false,
+                logLevel: true,
                 wsSignalerAddr: 'wss://free.freesignal.net',
                 // Other p2pConfig options provided by CDNBye
             }

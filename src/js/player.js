@@ -351,10 +351,13 @@ class DPlayer {
             switch (this.type) {
             // https://github.com/video-dev/hls.js
             case 'hls':
+            {
+                const hlsjsConfig = this.options.hlsjsConfig || {};
+                hlsjsConfig.p2pConfig.tag = 'dplayer';
                 if (window.Hls) {
                     if (Hls.isSupported()) {
                         this.destroyPrevVideo();
-                        const hls = new Hls(this.options.hlsjsConfig);
+                        const hls = new Hls(hlsjsConfig);
                         hls.loadSource(video.src);
                         hls.attachMedia(video);
 
@@ -370,7 +373,7 @@ class DPlayer {
                     requestScript('https://cdn.jsdelivr.net/npm/cdnbye@latest', () => {
                         if (Hls.isSupported()) {
                             this.destroyPrevVideo();
-                            const hls = new Hls(this.options.hlsjsConfig);
+                            const hls = new Hls(hlsjsConfig);
                             hls.loadSource(video.src);
                             hls.attachMedia(video);
 
@@ -383,6 +386,7 @@ class DPlayer {
                     });
                 }
                 break;
+            }
 
             // https://github.com/Bilibili/flv.js
             case 'flv':

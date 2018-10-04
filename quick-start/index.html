@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/p2p-dplayer@latest/dist/DPlayer.min.css">
 <div id="dplayer"></div>
-<script src="https://cdn.jsdelivr.net/npm/p2p-dplayer@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/p2p-dplayer@0.1.1"></script>
 <script>
     var dp = new DPlayer({
         container: document.getElementById('dplayer'),
@@ -9,11 +9,10 @@
             type: 'hls'
         },
         hlsjsConfig: {
-            debug: false,
+//            debug: false,
             // Other hlsjsConfig options provided by hls.js
             p2pConfig: {
                 logLevel: true,
-                wsSignalerAddr: 'wss://free.freesignal.net',
                 // Other p2pConfig options provided by CDNBye
             }
         }

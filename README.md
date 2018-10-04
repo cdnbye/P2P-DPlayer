@@ -16,7 +16,8 @@
 ## DPlayer with CDNBye P2P Engine
 ![image](figs/screen.jpg)
 
-Since had CDNBye [hlsjs-p2p-engine](https://github.com/cdnbye/hlsjs-p2p-engine), DPlayer is henceforth more lovely.
+Since had CDNBye [hlsjs-p2p-engine](https://github.com/cdnbye/hlsjs-p2p-engine), DPlayer is henceforth more lovely!
+内置了[hlsjs-p2p-engine](https://github.com/cdnbye/hlsjs-p2p-engine)的[DPlayer](https://github.com/MoePlayer/DPlayer)播放器，播放hls流支持P2P加速，API与DPlayer保持一致，使用方法参考[quick-start.html](quick-start/index.html)。
 
 ## Quick Start
 ```javascript
