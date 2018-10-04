@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/p2p-dplayer@latest/dist/DPlayer.min.css">
 <div id="dplayer"></div>
-<script src="https://cdn.jsdelivr.net/npm/p2p-dplayer@0.1.1"></script>
+<script src="https://cdn.jsdelivr.net/npm/p2p-dplayer@latest"></script>
 <script>
     var dp = new DPlayer({
         container: document.getElementById('dplayer'),
@@ -14,6 +14,7 @@
             p2pConfig: {
                 logLevel: true,
                 // Other p2pConfig options provided by CDNBye
+                // https://github.com/cdnbye/hlsjs-p2p-engine/blob/master/docs/%E4%B8%AD%E6%96%87/API.md
             }
         }
     });
