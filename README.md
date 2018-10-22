@@ -28,6 +28,7 @@ Since had CDNBye [hlsjs-p2p-engine](https://github.com/cdnbye/hlsjs-p2p-engine),
 <script>
     var dp = new DPlayer({
         container: document.getElementById('dplayer'),
+        autoplay: true,
         video: {
             url: 'https://video-dev.github.io/streams/x36xhzz/url_2/193039199_mp4_h264_aac_ld_7.m3u8',
             type: 'hls'
