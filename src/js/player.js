@@ -354,7 +354,7 @@ class DPlayer {
             {
                 const hlsjsConfig = this.options.hlsjsConfig || {};
                 if (!hlsjsConfig.p2pConfig) hlsjsConfig.p2pConfig = {};
-                if (!hlsjsConfig.p2pConfig.tag) hlsjsConfig.p2pConfig.tag = 'dplayer';
+                if (!hlsjsConfig.p2pConfig.tag) hlsjsConfig.p2pConfig.tag = 'p2p-dplayer';
                 if (window.Hls) {
                     if (Hls.isSupported()) {
                         this.destroyPrevVideo();
