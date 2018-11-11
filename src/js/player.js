@@ -358,6 +358,7 @@ class DPlayer {
                 if (window.Hls) {
                     if (Hls.isSupported()) {
                         this.destroyPrevVideo();
+
                         const hls = new Hls(hlsjsConfig);
                         hls.loadSource(video.src);
                         hls.attachMedia(video);

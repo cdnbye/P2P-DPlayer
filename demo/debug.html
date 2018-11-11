@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/p2p-dplayer@latest/dist/DPlayer.min.css">
+<div id="dplayer"></div>
+<script src="https://cdn.jsdelivr.net/npm/cdnbye@latest"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/p2p-dplayer@latest"></script>-->
+<script src="../dist/DPlayer.min.js"></script>
+<script>
+    var dp = new DPlayer({
+        container: document.getElementById('dplayer'),
+        autoplay: true,
+        video: {
+            quality: [{
+                name: 'HD',
+                url: 'https://video-dev.github.io/streams/x36xhzz/url_2/193039199_mp4_h264_aac_ld_7.m3u8',
+                type: 'hls',
+            }, {
+                name: 'SD',
+                url: 'https://video-dev.github.io/streams/x36xhzz/url_2/193039199_mp4_h264_aac_ld_7.m3u8',
+                type: 'hls',
+            }],
+            defaultQuality: 0,
+        },
+        hlsjsConfig: {
+            debug: false,
+            // Other hlsjsConfig options provided by hls.js
+            p2pConfig: {
+                logLevel: true,
+                // Other p2pConfig options provided by CDNBye
+                wsSignalerAddr: 'wss://free.freesignal.net',
+            }
+        }
+    });
+</script>
