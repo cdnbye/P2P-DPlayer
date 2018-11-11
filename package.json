@@ -10,7 +10,7 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack/dev.config.js --watch --colors",
     "test": "eslint src webpack",
     "publish": "npm publish",
-    "git-push": "git add . && git commit -m 'change link' && git push"
+    "git-push": "git add . && git commit -m 'update demo' && git push"
   },
   "files": [
     "dist"
