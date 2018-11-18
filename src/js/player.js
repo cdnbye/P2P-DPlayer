@@ -634,10 +634,13 @@ class DPlayer {
         hlsjs.p2pEngine.on('stats', (stats) => {
             this.p2pInfo.downloaded = stats.totalP2PDownloaded;
             this.p2pInfo.uploaded = stats.totalP2PUploaded;
+            this.events.trigger('stats', stats);
         }).on('peerId', (peerId) => {
             this.p2pInfo.peerId = peerId;
+            this.events.trigger('peerId', peerId);
         }).on('peers', (peers) => {
             this.p2pInfo.peers = peers.length;
+            this.events.trigger('peers', peers);
         });
     }
 }
