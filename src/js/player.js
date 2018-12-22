@@ -152,8 +152,8 @@ class DPlayer {
     }
 
     /**
-    * Seek video
-    */
+     * Seek video
+     */
     seek (time) {
         time = Math.max(time, 0);
         if (this.video.duration) {
@@ -343,7 +343,6 @@ class DPlayer {
                 }
             }
 
-            // TODO
             if (this.type === 'hls' && (video.canPlayType('application/x-mpegURL') || video.canPlayType('application/vnd.apple.mpegURL'))) {
                 this.type = 'normal';
             }
@@ -353,16 +352,11 @@ class DPlayer {
             case 'hls':
             {
                 const hlsjsConfig = this.options.hlsjsConfig || {};
-                if (!hlsjsConfig.p2pConfig) hlsjsConfig.p2pConfig = {};
-                if (!hlsjsConfig.p2pConfig.tag) hlsjsConfig.p2pConfig.tag = 'p2p-dplayer';
-                if (window.Hls) {
+                if (Hls) {
                     if (Hls.isSupported()) {
-                        this.destroyPrevVideo();
-
                         const hls = new Hls(hlsjsConfig);
                         hls.loadSource(video.src);
                         hls.attachMedia(video);
-
                         this.hlsjs = hls;
                         this.setupP2PListeners(hls);
                     }
@@ -371,21 +365,7 @@ class DPlayer {
                     }
                 }
                 else {
-                    // this.notice('Error: Can\'t find Hls.');
-                    requestScript('https://cdn.jsdelivr.net/npm/cdnbye@latest', () => {
-                        if (Hls.isSupported()) {
-                            this.destroyPrevVideo();
-                            const hls = new Hls(hlsjsConfig);
-                            hls.loadSource(video.src);
-                            hls.attachMedia(video);
-
-                            this.hlsjs = hls;
-                            this.setupP2PListeners(hls);
-                        }
-                        else {
-                            this.notice('Error: Hls is not supported.');
-                        }
-                    });
+                    this.notice('Error: Can\'t find Hls.');
                 }
                 break;
             }
@@ -552,21 +532,19 @@ class DPlayer {
         });
         const videoEle = new DOMParser().parseFromString(videoHTML, 'text/html').body.firstChild;
         this.template.videoWrap.insertBefore(videoEle, this.template.videoWrap.getElementsByTagName('div')[0]);
-        const currentTime = this.video.currentTime;
         this.prevVideo = this.video;
         this.video = videoEle;
         this.initVideo(this.video, this.quality.type || this.options.video.type);
-        // this.seek(this.prevVideo.currentTime);
-        this.seek(currentTime);
+        this.seek(this.prevVideo.currentTime);
         this.notice(`${this.tran('Switching to')} ${this.quality.name} ${this.tran('quality')}`, -1);
         this.events.trigger('quality_start', this.quality);
 
         this.on('canplay', () => {
             if (this.prevVideo) {
-                // if (this.video.currentTime !== this.prevVideo.currentTime) {
-                //     this.seek(this.prevVideo.currentTime);
-                //     return;
-                // }
+                if (this.video.currentTime !== this.prevVideo.currentTime) {
+                    this.seek(this.prevVideo.currentTime);
+                    return;
+                }
                 this.template.videoWrap.removeChild(this.prevVideo);
                 this.video.classList.add('dplayer-video-current');
                 if (!paused) {
@@ -579,13 +557,6 @@ class DPlayer {
                 this.events.trigger('quality_end');
             }
         });
-    }
-
-    destroyPrevVideo () {
-        if (this.hlsjs) {
-            this.hlsjs.p2pEngine.removeAllListeners();
-            this.hlsjs.destroy();
-        }
     }
 
     notice (text, time = 2000, opacity = 0.8) {
@@ -644,22 +615,6 @@ class DPlayer {
             this.events.trigger('peers', peers);
         });
     }
-}
-
-function requestScript (url, callback) {
-    // Adding the script tag to the head
-    const head = document.getElementsByTagName('head')[0];
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = url;
-
-    // Then bind the event to the callback function.
-    // There are several events for cross browser compatibility.
-    script.onreadystatechange = callback;
-    script.onload = callback;
-
-    // Fire the loading
-    head.appendChild(script);
 }
 
 export default DPlayer;

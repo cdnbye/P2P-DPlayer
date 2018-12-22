@@ -9,8 +9,10 @@
 <div id="dplayer"></div>
 <div id="stats"></div>
 <script src="https://cdn.jsdelivr.net/npm/cdnbye@latest"></script>
-<script src="https://cdn.jsdelivr.net/npm/p2p-dplayer@0.2.0"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/dplayer@latest"></script>-->
+<script src="../dist/DPlayer.min.js"></script>
 <script>
+    var _peerId = '', _peerNum = 0, _totalP2PDownloaded = 0, _totalP2PUploaded = 0;
     var dp = new DPlayer({
         container: document.getElementById('dplayer'),
         autoplay: true,
@@ -28,16 +30,16 @@
             }
         }
     });
-    var _peerId = '', _peerNum = 0, _totalP2PDownloaded = 0, _totalP2PUploaded = 0;
+
     dp.on('stats', function (stats) {
         _totalP2PDownloaded = stats.totalP2PDownloaded;
         _totalP2PUploaded = stats.totalP2PUploaded;
         updateStats();
-    });
-    dp.on('peerId', function (peerId) {
+    })
+        dp.on('peerId', function (peerId) {
         _peerId = peerId;
-    });
-    dp.on('peers', function (peers) {
+    })
+            dp.on('peers', function (peers) {
         _peerNum = peers.length;
         updateStats();
     });
