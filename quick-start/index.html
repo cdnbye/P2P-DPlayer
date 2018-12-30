@@ -9,8 +9,9 @@
 <div id="dplayer"></div>
 <div id="stats"></div>
 <script src="https://cdn.jsdelivr.net/npm/cdnbye@latest"></script>
-<!--<script src="https://cdn.jsdelivr.net/npm/dplayer@latest"></script>-->
-<script src="../dist/DPlayer.min.js"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/dplayer@latest"></script>
+<!--<script src="../dist/DPlayer.min.js"></script>-->
 <script>
     var _peerId = '', _peerNum = 0, _totalP2PDownloaded = 0, _totalP2PUploaded = 0;
     var dp = new DPlayer({
@@ -18,6 +19,7 @@
         autoplay: true,
         video: {
             url: 'https://video-dev.github.io/streams/x36xhzz/url_2/193039199_mp4_h264_aac_ld_7.m3u8',
+            // url: 'https://baidu.com-v-baidu.com/20180808/5411_8534bc42/index.m3u8',
             type: 'hls'
         },
         hlsjsConfig: {
@@ -25,6 +27,7 @@
             // Other hlsjsConfig options provided by hls.js
             p2pConfig: {
                 logLevel: true,
+                live: false,
                 // Other p2pConfig options provided by CDNBye
                 // https://docs.cdnbye.com/#/API
             }
@@ -36,10 +39,10 @@
         _totalP2PUploaded = stats.totalP2PUploaded;
         updateStats();
     })
-        dp.on('peerId', function (peerId) {
+    dp.on('peerId', function (peerId) {
         _peerId = peerId;
     })
-            dp.on('peers', function (peers) {
+    dp.on('peers', function (peers) {
         _peerNum = peers.length;
         updateStats();
     });

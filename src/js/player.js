@@ -352,6 +352,8 @@ class DPlayer {
             case 'hls':
             {
                 const hlsjsConfig = this.options.hlsjsConfig || {};
+                if (!hlsjsConfig.p2pConfig) hlsjsConfig.p2pConfig = {};
+                if (!hlsjsConfig.p2pConfig.tag) hlsjsConfig.p2pConfig.tag = 'p2p-dplayer';
                 if (Hls) {
                     if (Hls.isSupported()) {
                         const hls = new Hls(hlsjsConfig);
