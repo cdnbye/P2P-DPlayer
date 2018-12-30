@@ -46,6 +46,7 @@ Since had CDNBye [hlsjs-p2p-engine](https://github.com/cdnbye/hlsjs-p2p-engine),
             // Other hlsjsConfig options provided by hls.js
             p2pConfig: {
                 logLevel: true,
+                live: false,
                 // Other p2pConfig options provided by CDNBye
                 // https://docs.cdnbye.com/#/API
             }
