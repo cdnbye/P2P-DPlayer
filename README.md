@@ -32,7 +32,7 @@ Since had CDNBye [hlsjs-p2p-engine](https://github.com/cdnbye/hlsjs-p2p-engine),
 <div id="dplayer"></div>
 <div id="stats"></div>
 <script src="https://cdn.jsdelivr.net/npm/cdnbye@latest"></script>
-<script src="https://cdn.jsdelivr.net/npm/p2p-dplayer@0.2.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/p2p-dplayer@latest"></script>
 <script>
     var dp = new DPlayer({
         container: document.getElementById('dplayer'),
