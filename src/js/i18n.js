@@ -22,7 +22,7 @@ function i18n (lang) {
 // add translation text here
 const tranTxt = {
     'zh-cn' : {
-        'Powered by P2P Engine': '采用CDNBye P2P加速',
+        'CDNBye P2P Engine': 'CDNBye P2P加速',
         'Danmaku is loading': '弹幕加载中',
         'Top': '顶部',
         'Bottom': '底部',
@@ -62,7 +62,7 @@ const tranTxt = {
         'Video & P2P info': '视频&P2P统计信息',
     },
     'zh-tw' : {
-        'Powered by P2P Engine': '采用CDNBye P2P加速',
+        'CDNBye P2P Engine': 'CDNBye P2P加速',
         'Danmaku is loading': '彈幕載入中',
         'Top': '頂部',
         'Bottom': '底部',

@@ -62,8 +62,8 @@ export default (options) => {
             link: 'https://github.com/MoePlayer/DPlayer'
         },
         {
-            text: 'Powered by CDNBye P2P',
-            link: 'https://docs.cdnbye.com'
+            text: 'CDNBye P2P Engine',
+            link: 'https://github.com/cdnbye/hlsjs-p2p-engine'
         }
     ]);
 
