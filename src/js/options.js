@@ -61,10 +61,6 @@ export default (options) => {
             text: `DPlayer v${DPLAYER_VERSION}`,
             link: 'https://github.com/MoePlayer/DPlayer'
         },
-        {
-            text: 'CDNBye P2P Engine',
-            link: 'https://github.com/cdnbye/hlsjs-p2p-engine'
-        }
     ]);
 
     return options;

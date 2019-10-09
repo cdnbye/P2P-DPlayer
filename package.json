@@ -1,6 +1,6 @@
 {
   "name": "p2p-dplayer",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Wow, such a lovely HTML5 danmaku video player powered by CDNBye P2P Engine",
   "main": "dist/DPlayer.min.js",
   "style": "dist/DPlayer.min.css",
