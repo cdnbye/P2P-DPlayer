@@ -4,7 +4,7 @@
 </p>
 <h1 align="center">P2P-DPlayer</h1>
 
-> 🍭 Wow, such a lovely HTML5 danmaku video player powered by CDNBye P2P Engine
+> 警告：移动端p2p失效，已无人维护，建议不要在生产环境使用！
 
 [![npm](https://img.shields.io/npm/v/p2p-dplayer.svg?style=flat-square)](https://www.npmjs.com/package/p2p-dplayer)
 [![npm](https://img.shields.io/npm/l/dplayer.svg?style=flat-square)](https://github.com/MoePlayer/DPlayer/blob/master/LICENSE)
