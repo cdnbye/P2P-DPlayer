@@ -5,7 +5,7 @@
 <h1 align="center">P2P-DPlayer</h1>
 
 > 警告：本项目已无人维护，请使用官方播放器[CBPlayer](https://github.com/cdnbye/CBPlayer)
-<br>
+> 
 > Notice：This project is deprecated now, please consider use [CBPlayer](https://github.com/cdnbye/CBPlayer)
 
 [![npm](https://img.shields.io/npm/v/p2p-dplayer.svg?style=flat-square)](https://www.npmjs.com/package/p2p-dplayer)
