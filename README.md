@@ -4,7 +4,8 @@
 </p>
 <h1 align="center">P2P-DPlayer</h1>
 
-> 警告：移动端p2p失效，已无人维护，建议不要在生产环境使用！
+> 警告：本项目已无人维护，请使用官方播放器[CBPlayer](https://github.com/cdnbye/CBPlayer)
+> Notice：This project is deprecated now, please consider use [CBPlayer](https://github.com/cdnbye/CBPlayer)
 
 [![npm](https://img.shields.io/npm/v/p2p-dplayer.svg?style=flat-square)](https://www.npmjs.com/package/p2p-dplayer)
 [![npm](https://img.shields.io/npm/l/dplayer.svg?style=flat-square)](https://github.com/MoePlayer/DPlayer/blob/master/LICENSE)
